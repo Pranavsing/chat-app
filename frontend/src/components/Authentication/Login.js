@@ -39,12 +39,13 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
-
       const { data } = await axios.post(
         "/api/user/login",
         { email, password },
         config
-      );
+        );
+        
+        console.log(data)
 
       toast({
         title: "Login Successful",
@@ -58,6 +59,7 @@ const Login = () => {
       setLoading(false);
       history.push("/chats");
     } catch (error) {
+      console.log(error.response.data);
       toast({
         title: "Error Occured!",
         description: error.response.data.message,
